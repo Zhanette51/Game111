@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юбилей Мамы - Приключение в Стиле Марио!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #preload { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 С Юбилеем, Любимая Мама! 🎉</h1>
+            <p class="subtitle">Путешествие по Островам Любви и Благодарности</p>
+        </header>
+
+        <main>
+            <div class="game-container">
+                <canvas id="gameCanvas"></canvas>
+                <div id="message" class="message"></div>
+                <div id="loading" class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Загружаем мир любви...</p>
+                </div>
+                
+                <!-- Всплывающие сообщения -->
+                <div id="floatingMessages" class="floating-messages"></div>
+            </div>
+
+            <div class="game-controls">
+                <div class="stats">
+                    <div class="stat-box">
+                        <span class="stat-icon">🎁</span>
+                        <span id="score">0</span>/<span id="totalGifts">5</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-icon">❤️</span>
+                        <span id="lives">3</span>
+                    </div>
+                </div>
+                
+                <div class="instructions">
+                    <p><kbd>←</kbd> <kbd>→</kbd> - Двигаться</p>
+                    <p><kbd>↑</kbd> - Прыжок</p>
+                    <p><kbd>R</kbd> - Перезапуск</p>
+                </div>
+                
+                <button id="restartButton" class="pixel-button">Начать заново</button>
+            </div>
+        </main>
+
+        <footer>
+            <p class="heart-message">Создано с бесконечной любовью и благодарностью! 💕</p>
+            <p class="hint">Собери все подарки-комплименты и достигни флага любви!</p>
+        </footer>
+    </div>
+
+    <!-- Предзагрузка изображений -->
+    <div id="preload">
+        <img src="images/mama.png" id="mamaSprite">
+        <img src="images/ground.png" id="groundSprite">
+        <img src="images/platform.png" id="platformSprite">
+        <img src="images/gift.png" id="giftSprite">
+        <img src="images/flag.png" id="flagSprite">
+        <img src="images/cloud.png" id="cloudSprite">
+        <img src="images/bush.png" id="bushSprite">
+        <img src="images/flower.png" id="flowerSprite">
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
