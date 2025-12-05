@@ -1,0 +1,321 @@
+/* Общие стили */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Comic Neue', cursive;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.container {
+    width: 90vw;
+    height: 90vh;
+    max-width: 1400px;
+    max-height: 900px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    border: 8px solid #f8c8dc;
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(45deg, 
+        #ff6b6b, #4ecdc4, #45b7d1, 
+        #96ceb4, #feca57, #ff9ff3);
+    border-radius: 24px;
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0.6;
+}
+
+/* Заголовок */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 4px dashed #ff6b6b;
+}
+
+h1 {
+    color: #e74c3c;
+    font-size: 2.8em;
+    text-shadow: 3px 3px 0 #f1c40f, 6px 6px 0 rgba(0, 0, 0, 0.1);
+    font-family: 'Press Start 2P', cursive;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    animation: pulse 2s infinite;
+}
+
+.subtitle {
+    font-size: 1.4em;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Игровая область */
+.game-container {
+    flex: 1;
+    position: relative;
+    margin: 20px 0;
+    border: 6px solid #27ae60;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #87CEEB;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87CEEB 0%, #5c94fc 100%);
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Сообщения */
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 30px 50px;
+    border-radius: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+    display: none;
+    border: 8px solid #ffd700;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+    z-index: 100;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+    line-height: 1.5;
+    animation: bounce 0.5s ease infinite alternate;
+}
+
+.floating-messages {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.floating-message {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    color: #e74c3c;
+    padding: 12px 24px;
+    border-radius: 15px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border: 4px solid #f1c40f;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 1s ease-out;
+    white-space: nowrap;
+    font-family: 'Comic Neue', cursive;
+}
+
+/* Загрузка */
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    font-family: 'Press Start 2P', monospace;
+    text-align: center;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* Управление */
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(52, 73, 94, 0.9);
+    border-radius: 15px;
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+}
+
+.stat-box {
+    background: #2c3e50;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 3px solid #7f8c8d;
+    font-family: 'Press Start 2P', monospace;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+}
+
+.stat-icon {
+    font-size: 1.5em;
+}
+
+#score {
+    color: #2ecc71;
+    font-size: 1.3em;
+}
+
+#lives {
+    color: #e74c3c;
+    font-size: 1.3em;
+}
+
+.instructions {
+    background: #34495e;
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    border: 3px solid #7f8c8d;
+}
+
+.instructions p {
+    margin: 5px 0;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.9em;
+}
+
+.instructions kbd {
+    background: #2c3e50;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 2px solid #7f8c8d;
+    box-shadow: 0 3px 0 #7f8c8d;
+    margin: 0 2px;
+}
+
+/* Кнопки */
+.pixel-button {
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.2em;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    border: 6px solid #922b21;
+    box-shadow: 0 8px 0 #922b21;
+    transition: all 0.1s;
+    position: relative;
+    top: 0;
+    letter-spacing: 1px;
+}
+
+.pixel-button:hover {
+    background: linear-gradient(to bottom, #ff6b6b, #e74c3c);
+    top: 2px;
+    box-shadow: 0 6px 0 #922b21;
+}
+
+.pixel-button:active {
+    top: 8px;
+    box-shadow: 0 0 0 #922b21;
+}
+
+/* Футер */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 3px dashed #3498db;
+}
+
+.heart-message {
+    font-size: 1.3em;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hint {
+    font-size: 1em;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Анимации */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes bounce {
+    from { transform: translate(-50%, -50%) scale(1); }
+    to { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    h1 { font-size: 2.2em; }
+    .game-controls { flex-direction: column; gap: 20px; }
+    .stats { order: 2; }
+    .instructions { order: 1; }
+    .pixel-button { order: 3; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    h1 { font-size: 1.8em; }
+    .stat-box, .instructions { padding: 10px 15px; }
+    .pixel-button { padding: 15px 30px; }
+}
